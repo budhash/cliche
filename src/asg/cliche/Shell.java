@@ -29,6 +29,8 @@ import java.util.List;
  */
 public class Shell {
 
+    public static String PROJECT_HOMEPAGE_URL = "http://cliche.sourceforge.net";
+
     private Output output;
     private Input input;
     private String hint;
