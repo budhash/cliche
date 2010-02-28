@@ -9,8 +9,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,7 +78,7 @@ public class HelpCommandHandler implements ShellDependent {
             }
         }
 
-        String html = String.format(HTML_FORMAT, htmlEncode(owner.getHint()), commandsHTML);
+        String html = String.format(HTML_FORMAT, htmlEncode(owner.getAppName()), commandsHTML);
 
         File file = new File(fileName);
         OutputStreamWriter w = new FileWriter(file);
@@ -144,10 +142,10 @@ public class HelpCommandHandler implements ShellDependent {
     @Command(description="Show info on using the UI")
     public Object help() {
         return
-                "This is Cliche shell (http://cliche.sourceforge.net/).\n" +
+                "This is Cliche shell (" + Shell.PROJECT_HOMEPAGE_URL + ").\n" +
                 "To list all available commands enter ?list or ?list-all, " +
                 "the latter will also show you system commands. To get detailed info " +
-                " on a command enter ?help command-name.";
+                "on a command enter ?help command-name";
     }
 
     @Command(description="Show detailed info on all commands with given name")

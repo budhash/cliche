@@ -27,10 +27,11 @@ public class ShellFactory {
      * @see asg.cliche.Shell#Shell(asg.cliche.Shell.Settings, asg.cliche.CommandTable, java.util.List)
      *
      * @param prompt Prompt to be displayed
+     * @param appName The app name string
      * @param handlers Command handlers
      * @return Shell that can be either further customized or run directly by calling commandLoop().
      */
-    public static Shell createConsoleShell(String prompt, String hint, Object... handlers) {
+    public static Shell createConsoleShell(String prompt, String appName, Object... handlers) {
         ConsoleIO io = new ConsoleIO();
 
         List<String> path = new ArrayList<String>(1);
@@ -41,7 +42,7 @@ public class ShellFactory {
 
         Shell theShell = new Shell(new Shell.Settings(io, io, modifAuxHandlers, false),
                 new CommandTable(new DashJoinedNamer(true)), path);
-        theShell.setHint(hint);
+        theShell.setAppName(appName);
 
         theShell.addMainHandler(theShell, "!");
         theShell.addMainHandler(new HelpCommandHandler(), "?");
@@ -61,11 +62,12 @@ public class ShellFactory {
      * @see asg.cliche.Shell#Shell(asg.cliche.Shell.Settings, asg.cliche.CommandTable, java.util.List)
      *
      * @param prompt Prompt to be displayed
+     * @param appName The app name string
      * @param mainHandler Main command handler
      * @param auxHandlers Aux handlers to be passed to all subshells.
      * @return Shell that can be either further customized or run directly by calling commandLoop().
      */
-    public static Shell createConsoleShell(String prompt, String hint, Object mainHandler,
+    public static Shell createConsoleShell(String prompt, String appName, Object mainHandler,
             MultiMap<String, Object> auxHandlers) {
         ConsoleIO io = new ConsoleIO();
 
@@ -77,7 +79,7 @@ public class ShellFactory {
 
         Shell theShell = new Shell(new Shell.Settings(io, io, modifAuxHandlers, false),
                 new CommandTable(new DashJoinedNamer(true)), path);
-        theShell.setHint(hint);
+        theShell.setAppName(appName);
 
         theShell.addMainHandler(theShell, "!");
         theShell.addMainHandler(new HelpCommandHandler(), "?");
@@ -94,11 +96,12 @@ public class ShellFactory {
      * @see asg.cliche.Shell#Shell(asg.cliche.Shell.Settings, asg.cliche.CommandTable, java.util.List)
      *
      * @param prompt Prompt to be displayed
+     * @param appName The app name string
      * @param mainHandler Command handler
      * @return Shell that can be either further customized or run directly by calling commandLoop().
      */
-    public static Shell createConsoleShell(String prompt, String hint, Object mainHandler) {
-        return createConsoleShell(prompt, hint, mainHandler, new EmptyMultiMap<String, Object>());
+    public static Shell createConsoleShell(String prompt, String appName, Object mainHandler) {
+        return createConsoleShell(prompt, appName, mainHandler, new EmptyMultiMap<String, Object>());
     }
 
     /**
@@ -109,12 +112,12 @@ public class ShellFactory {
      *
      * @param pathElement sub-prompt
      * @param parent Shell to be subshell'd
-     * @param hint Hint to be displayed to the user
+     * @param appName The app name string
      * @param mainHandler Command handler
      * @param auxHandlers Aux handlers to be passed to all subshells.
      * @return subshell
      */
-    public static Shell createSubshell(String pathElement, Shell parent, String hint, Object mainHandler,
+    public static Shell createSubshell(String pathElement, Shell parent, String appName, Object mainHandler,
             MultiMap<String, Object> auxHandlers) {
 
         List<String> newPath = new ArrayList<String>(parent.getPath());
@@ -123,7 +126,7 @@ public class ShellFactory {
         Shell subshell = new Shell(parent.getSettings().createWithAddedAuxHandlers(auxHandlers),
                 new CommandTable(parent.getCommandTable().getNamer()), newPath);
 
-        subshell.setHint(hint);
+        subshell.setAppName(appName);
         subshell.addMainHandler(subshell, "!");
         subshell.addMainHandler(new HelpCommandHandler(), "?");
 
@@ -139,12 +142,12 @@ public class ShellFactory {
      *
      * @param pathElement sub-prompt
      * @param parent Shell to be subshell'd
-     * @param hint Hint to be displayed to the user
+     * @param appName The app name string
      * @param mainHandler Command handler
      * @return subshell
      */
-    public static Shell createSubshell(String pathElement, Shell parent, String hint, Object mainHandler) {
-        return createSubshell(pathElement, parent, hint, mainHandler, new EmptyMultiMap<String, Object>());
+    public static Shell createSubshell(String pathElement, Shell parent, String appName, Object mainHandler) {
+        return createSubshell(pathElement, parent, appName, mainHandler, new EmptyMultiMap<String, Object>());
     }
 
 

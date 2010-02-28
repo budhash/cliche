@@ -33,7 +33,7 @@ public class Shell {
 
     private Output output;
     private Input input;
-    private String hint;
+    private String appName;
 
     public static class Settings {
         private final Input input;
@@ -213,7 +213,7 @@ public class Shell {
                 ((ShellManageable)handler).cliEnterLoop();
             }
         }
-        output.output(hint, outputConverter);
+        output.output(appName, outputConverter);
         String command = "";
         while (!command.trim().equals("exit")) {
             try {
@@ -244,6 +244,9 @@ public class Shell {
         }
     }
 
+    private static final String HINT_FORMAT = "This is %1$s, running on Cliche Shell\n" +
+            "For more information on the Shell, enter ?help";
+
     /**
      * You can operate Shell linewise, without entering the command loop.
      * All output is directed to shell's Output.
@@ -255,7 +258,7 @@ public class Shell {
      */
     public void processLine(String line) throws CLIException {
         if (line.trim().equals("?")) {
-            output.output(hint, outputConverter);
+            output.output(String.format(HINT_FORMAT, appName), outputConverter);
         } else {
             List<Token> tokens = Token.tokenize(line);
             if (tokens.size() > 0) {
@@ -311,12 +314,12 @@ public class Shell {
     /**
      * Hint is some text displayed before the command loop and every time user enters "?".
      */
-    public void setHint(String hint) {
-        this.hint = hint;
+    public void setAppName(String appName) {
+        this.appName = appName;
     }
     
-    public String getHint() {
-        return hint;
+    public String getAppName() {
+        return appName;
     }
 
 
