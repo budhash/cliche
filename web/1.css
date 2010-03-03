@@ -1,0 +1,132 @@
+body {
+    background: white none;
+    font-family: "Trebuchet MS", Verdana,Arial,Helvetica,sans-serif;
+    margin: 0px;
+    padding: 0px;
+    background-image: none;
+    background-repeat: no-repeat;
+}
+
+table, td, tr {
+    margin: 0px;
+    padding: 0px;
+    border: thin none;
+}
+
+div.MainPanel {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    padding: 3px 10px 3px 10px;
+    width: 600px;
+    border-left-style: dotted;
+    border-right-style: dotted;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-bottom-style: dotted;
+    border-bottom-width: 1px;
+}
+
+.TopPanel {
+    padding: 0px;
+    width: 100%;
+    height: 30px;
+    border: thin none;
+    text-align: center;
+    display: none;
+}
+
+.TopLeftCorner {
+    height: 30px;
+    width: 30px;
+    left: 0px;
+    background: transparent URL(images/TopBar_02.png);
+}
+.TopRightCorner {
+    height: 30px;
+    width: 30px;
+    right: 0px;
+    background: transparent URL(images/TopBar_03.png);
+}
+.TopCenter {
+    height: 30px;
+    left: 30px;
+    right: 30px;
+    background: transparent URL(images/TopBar_05.png);
+}
+
+img.Banner {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3px 10px 3px 10px;
+    width: 210px;
+	height: 62px;
+}
+
+.BottomLine {
+	text-align: center;
+}
+
+h1 {
+    font-weight: bold;
+    text-align: center;
+    color: #336600;
+    font-size: 25px;
+    margin: 5px 0px 5px 0px;
+    padding: 0px;
+}
+
+h2 {
+    font-weight: bold;
+    text-align: center;
+    color: #ff6600;
+    font-size: 18px;
+    letter-spacing: 4px;
+}
+
+h3 {
+    font-weight: bold;
+    text-align: left;
+    color: #4a822e;
+    font-size: 16px;
+    margin: 3px;
+    padding: 0px 0px 0px 30px;
+}
+
+p {
+    font-weight: normal;
+    text-align: justify;
+    font-size: 15px;
+    margin: 3px 3px 20px 3px;
+    padding: 0px 0px 0px 0px;
+}
+
+a:link {
+    font-weight: normal;
+    text-align: center;
+    color: #ff6600;
+}
+
+a:active, a:visited {
+    font-weight: normal;
+    text-align: center;
+    color: #cc3300;
+}
+
+pre, code {
+    font-family: Consolas, 'Courier New',Courier,monospace;
+    font-size: 14px;
+}
+
+div.CodeBlock {
+    font-family: Consolas, 'Courier New',Courier,monospace;
+    font-size: 14px;
+    background-color: #ffffcc;
+    padding: 10px;
+}
+
+.line-number {background-color: #e9e8e2}
+.keyword-directive {color: #0000e6}
+.character {color: #ce7b00}
+.ST0 {color: #ce7b00; font-family: Consolas; font-weight: bold}
