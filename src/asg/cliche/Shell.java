@@ -202,6 +202,16 @@ public class Shell {
     }
 
     /**
+     * Function to allow changing path at runtime; use with care to not break
+     * the semantics of sub-shells (if you're using them) or use to emulate
+     * tree navigation without subshells
+     * @param path New path
+     */
+    public void setPath(List<String> path) {
+        this.path = path;
+    }
+    
+    /**
      * Runs the command session.
      * Create the Shell, then run this method to listen to the user,
      * and the Shell will invoke Handler's methods.

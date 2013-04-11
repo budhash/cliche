@@ -12,6 +12,8 @@ import asg.cliche.Shell;
 import asg.cliche.ShellDependent;
 import asg.cliche.ShellFactory;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 'more advanced' example.
@@ -33,6 +35,13 @@ public class Example implements ShellDependent {
         return result;
     }
 
+    @Command(description="setPath example")
+    public void setPath(String path) {
+        List<String> pathComps = new ArrayList<String>();
+        pathComps.add(path);
+        this.shell.setPath(pathComps);
+    }
+    
     public static final InputConverter[] CLI_INPUT_CONVERTERS = {
 
         // You can use Input Converters to support named constants
