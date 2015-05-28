@@ -4,4 +4,4 @@ jdk:
   - openjdk7
   - openjdk6
 script: |
-  mvn clean install -Pqulice  
+  mvn clean install  
