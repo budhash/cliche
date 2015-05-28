@@ -638,6 +638,16 @@
 					<artifactId>junit</artifactId>
 					<scope>test</scope>
 				</dependency>
+				<dependency>
+					<groupId>org.hamcrest</groupId>
+					<artifactId>hamcrest-core</artifactId>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.hamcrest</groupId>
+					<artifactId>hamcrest-library</artifactId>
+					<scope>test</scope>
+				</dependency>
 			</dependencies>
 		</profile>
 	</profiles>
@@ -1036,7 +1046,7 @@
 						<showDeprecation>true</showDeprecation>
 						<compilerArgs>
 							<arg>-Xlint</arg>
-							<arg>-Werror</arg>
+							<!-- <arg>-Werror</arg> -->
 							<arg>-Xlint:-path</arg>
 							<!-- @see https://blogs.oracle.com/darcy/entry/bootclasspath_older_source -->
 							<arg>-Xlint:-options</arg>
