@@ -4,7 +4,7 @@
 	<groupId>com.budhash.cliche</groupId>
 	<artifactId>cliche-shell</artifactId>
 	<packaging>jar</packaging>
-	<version>0.9.0</version>
+	<version>0.9.0-SNAPSHOT</version>
 	<name>cliche shell</name>
 	<description>simple command-line shell for java applications</description>
 
@@ -51,11 +51,11 @@
 	<distributionManagement>
 		<downloadUrl>https://oss.sonatype.org/content/groups/public</downloadUrl>
 		<repository>
-			<id>oss.sonatype.org</id>
+			<id>sonatype-nexus-staging</id>
 			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
 		</repository>
 		<snapshotRepository>
-			<id>oss.sonatype.org</id>
+			<id>sonatype-nexus-snapshots</id>
 			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
@@ -189,7 +189,7 @@
 						<version>1.6.5</version>
 						<extensions>true</extensions>
 						<configuration>
-							<serverId>oss.sonatype.org</serverId>
+							<serverId>sonatype-nexus-staging</serverId>
 							<nexusUrl>https://oss.sonatype.org/</nexusUrl>
 							<description>${project.version}</description>
 						</configuration>
@@ -455,7 +455,7 @@
 							GPG keys have to be provided in CI environment, and published beforehand.
 							@link http://www.sonatype.com/people/2010/01/how-to-generate-pgp-signatures-with-maven/ -->
 						<artifactId>maven-gpg-plugin</artifactId>
-						<version>1.5</version>
+						<version>1.6</version>
 						<executions>
 							<execution>
 								<id>sign-artifacts</id>
