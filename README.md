@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/budhash/cliche.png?branch=master)](https://travis-ci.org/budhash/cliche)
+
 # Cliche Command-Line Shell
 Cliche is a small Java library enabling really simple creation of interactive command-line user interfaces.
 
