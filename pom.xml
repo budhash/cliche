@@ -5,7 +5,7 @@
 	<groupId>com.budhash.cliche</groupId>
 	<artifactId>cliche-shell</artifactId>
 	<packaging>jar</packaging>
-	<version>0.9.1</version>
+	<version>0.9.1-SNAPSHOT</version>
 	<name>cliche shell</name>
 	<description>simple command-line shell for java applications</description>
 
@@ -38,7 +38,6 @@
 		<connection>scm:git:https://github.com/budhash/cliche.git</connection>
 		<developerConnection>scm:git:git@github.com:budhash/cliche.git</developerConnection>
 		<url>https://github.com/budhash/cliche</url>
-		<tag>cliche-shell-0.9.1</tag>
 	</scm>
 	<issueManagement>
 		<url>https://github.com/budhash/cliche/issues</url>
