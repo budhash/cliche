@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.budhash.cliche</groupId>
@@ -34,9 +35,9 @@
 		</developer>
 	</developers>
 	<scm>
+		<connection>scm:git:https://github.com/budhash/cliche.git</connection>
+		<developerConnection>scm:git:git@github.com:budhash/cliche.git</developerConnection>
 		<url>https://github.com/budhash/cliche</url>
-		<connection>scm:git:git://github.com/budhash/cliche.git</connection>
-		<developerConnection>scm:git:ssh://git@github.com/budhash/cliche</developerConnection>
 		<tag>cliche-shell-0.9.1</tag>
 	</scm>
 	<issueManagement>
@@ -81,6 +82,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
+		<project.scm.id>github-budhash</project.scm.id>
 
 		<!-- dependency versions -->
 
