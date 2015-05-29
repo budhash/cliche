@@ -41,8 +41,10 @@ test:
 doc:
 	@ $(MVN) $(MVNFLAGS) javadoc:javadoc
 
-deploy-sonatype:
-	@ $(MVN) -Psonatype
+deploy-staging:
+	@ $(MVN) clean deploy
+release:
+	@ $(MVN) clean deploy -Psonatype -Psign-gpg
 	
 qulice:	
 	@ $(MVN) clean install -Pqulice
