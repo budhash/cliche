@@ -43,6 +43,7 @@ doc:
 
 deploy-staging:
 	@ $(MVN) clean deploy
+
 release:
 	@ $(MVN) clean deploy -Psonatype -Psign-gpg
 	
