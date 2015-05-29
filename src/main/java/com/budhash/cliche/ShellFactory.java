@@ -25,7 +25,7 @@ public class ShellFactory {
      *
      * Run the obtained Shell with commandLoop().
      *
-     * @see asg.cliche.Shell#Shell(asg.cliche.Shell.Settings, asg.cliche.CommandTable, java.util.List)
+     * @see com.budhash.cliche.Shell#Shell(com.budhash.cliche.Shell.Settings, com.budhash.cliche.CommandTable, java.util.List)
      *
      * @param prompt Prompt to be displayed
      * @param appName The app name string
@@ -60,7 +60,7 @@ public class ShellFactory {
      *
      * Run the obtained Shell with commandLoop().
      *
-     * @see asg.cliche.Shell#Shell(asg.cliche.Shell.Settings, asg.cliche.CommandTable, java.util.List)
+     * @see com.budhash.cliche.Shell#Shell(com.budhash.cliche.Shell.Settings, com.budhash.cliche.CommandTable, java.util.List)
      *
      * @param prompt Prompt to be displayed
      * @param appName The app name string
@@ -94,7 +94,7 @@ public class ShellFactory {
      *
      * Run the obtained Shell with commandLoop().
      *
-     * @see asg.cliche.Shell#Shell(asg.cliche.Shell.Settings, asg.cliche.CommandTable, java.util.List)
+     * @see com.budhash.cliche.Shell#Shell(com.budhash.cliche.Shell.Settings, com.budhash.cliche.CommandTable, java.util.List)
      *
      * @param prompt Prompt to be displayed
      * @param appName The app name string

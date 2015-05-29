@@ -27,7 +27,7 @@ public interface CommandNamer {
      * take parameter types into account.
      *
      * @param commandMethod Command method
-     * @return asg.cliche.CommandNamer.NamingInfo containing generated name and abbrev array.
+     * @return com.budhash.cliche.CommandNamer.NamingInfo containing generated name and abbrev array.
      */
     NamingInfo nameCommand(Method commandMethod);
 

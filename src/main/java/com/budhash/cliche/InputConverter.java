@@ -19,7 +19,7 @@ public interface InputConverter {
      * @param toClass Class to be converted to
      * @return Object of the class toClass or <strong>null</strong>, if don't know how to convert to given class
      *
-     * @see asg.cliche.Shell
+     * @see com.budhash.cliche.Shell
      */
     Object convertInput(String original, Class<?> toClass) throws Exception;
 }

@@ -74,8 +74,8 @@ public class Token {
      * @param input String to be tokenized
      * @return List of tokens
      *
-     * @see asg.cliche.Shell.Token
-     * @see asg.cliche.Shell.escapeString
+     * @see com.budhash.cliche.Shell.Token
+     * @see com.budhash.cliche.Shell.escapeString
      */
     /*package-private for tests*/
     public static List<Token> tokenize(final String input) {

@@ -41,7 +41,7 @@ public class InputConversionEngine {
             Object conversionResult = currentConverter.convertInput(string, aClass);
             if (conversionResult != null) {
                 if (!aClass.isAssignableFrom(conversionResult.getClass())) {
-                    throw new CLIException("Registered asg.Cliche converter " +
+                    throw new CLIException("Registered com.budhash.cliche converter " +
                             currentConverter + " returns wrong result");
                 } else {
                     return conversionResult;

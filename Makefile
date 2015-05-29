@@ -24,7 +24,7 @@ install:
 	@ $(MVN) clean install
 	
 site:
-	@ $(MVN) $(MVNFLAGS) -Psite
+	@ $(MVN) site -Psite
 	
 gh-pages:	
 	@ $(MVN) clean test install site-deploy -Pgh-pages
@@ -55,6 +55,9 @@ clean:
 	@- rm -rf ./build/*
 	@- rm -rf ./docs/*
 
+update-versions:
+	@ $(MVN) versions:update-properties
+	
 distclean: clean ;
 
 docs: doc ;
