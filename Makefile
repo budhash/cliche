@@ -1,5 +1,5 @@
 ##################################################################
-#          Project Convenience Makefile Wrapper for Maven2       #
+#          Project Convenience Makefile Wrapper for Maven        #
 ##################################################################
 
 # This makefile is just a convenience wrapper for the Maven
@@ -20,17 +20,8 @@ endif
 all: 
 	@ $(MVN) $(MVNFLAGS) package
 
-install:
-	@ $(MVN) clean install
-	
-site:
-	@ $(MVN) site -Psite
-	
-gh-pages:	
-	@ $(MVN) clean test install site-deploy -Pgh-pages
-	
-package: 
-	@ $(MVN) $(MVNFLAGS) package
+clean:
+	@ $(MVN) $(MVNFLAGS) clean
 
 compile: 
 	@ $(MVN) $(MVNFLAGS) compile
@@ -38,22 +29,37 @@ compile:
 test:
 	@ $(MVN) $(MVNFLAGS) test
 
+qulice:	
+	@ $(MVN) clean install -Pqulice
+
+install:
+	@ $(MVN) clean install
+				
+site:
+	@ $(MVN) site -Psite
+	
+gh-pages:	
+	@ $(MVN) clean test install site-deploy -Pgh-pages
+
 doc:
 	@ $(MVN) $(MVNFLAGS) javadoc:javadoc
+		
+package: 
+	@ $(MVN) $(MVNFLAGS) package
 
 deploy-staging:
 	@ $(MVN) clean deploy
 
 release:
-	@ $(MVN) clean deploy -Psonatype -Psign-gpg
+	@ $(MVN) release:clean release:prepare release:perform
+
+release-silent:
+	@ $(MVN) -B release:clean release:prepare release:perform
 	
-qulice:	
-	@ $(MVN) clean install -Pqulice
-	
-clean:
-	@- rm -rf ./bin/*
-	@- rm -rf ./build/*
-	@- rm -rf ./docs/*
+#clean:
+#	@- rm -rf ./bin/*
+#	@- rm -rf ./build/*
+#	@- rm -rf ./docs/*
 
 update-versions:
 	@ $(MVN) versions:update-properties
@@ -69,11 +75,14 @@ documentation: doc ;
 help:
 	@ echo "Usage   :  make <target>"
 	@ echo "Targets :"
-	@ echo "   all ........... Builds the project."
-	@ echo "   package ....... Archives all *.class files."
-	@ echo "   compile ....... Compiles all Java files."
-	@ echo "   check ......... Builds and runs all unit tests."
-	@ echo "   test .......... Builds and runs all unit tests."
+	@ echo "   all ........... Builds the project"
+	@ echo "   clean ......... Removes build products"	
+	@ echo "   compile ....... Compiles all Java files"	
+	@ echo "   test .......... Builds and runs all unit tests"
+	@ echo "   qulice ....... Builds and runs various static code analysis tools"	
+	@ echo "   install .......... Builds and installs to local repository"	
 	@ echo "   docs .......... Generates project documentation."
-	@ echo "   clean ......... Removes build products."
-	@ echo "   help .......... Prints this help message."
+	@ echo "   deploy-staging .......... Deploys snapshot to staging"
+	@ echo "   release .......... Releases to maven central (interactive)"
+	@ echo "   release-silent .......... Releases to maven central (non-interactive)"		
+	@ echo "   help .......... Prints this help message"
