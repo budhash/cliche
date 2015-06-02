@@ -835,7 +835,7 @@
 						<configuration>
 							<rules>
 								<requireJavaVersion>
-									<version>(1.6,1.7,1.8)</version>
+									<version>[1.6,)</version>
 								</requireJavaVersion>
 								<requireMavenVersion>
 									<version>(,2.1.0),(2.1.0,2.2.0),(2.2.0,)</version>
@@ -919,7 +919,7 @@
 						<extensions>true</extensions>
 						<executions>
 							<execution>
-								<id>deploy-to-sonatype</id>
+								<id>deploy-to-nexus</id>
 								<phase>deploy</phase>
 								<goals>
 									<goal>deploy</goal>
@@ -937,8 +937,7 @@
 			</build>
 		</profile>
 		<profile>
-			<!-- Sign artifacts before installation with GPG. To enable this profile
-				you should have "gpg.keyname" property defined. -->
+			<!-- Sign artifacts before installation with GPG -->
 			<id>release-sign</id>
 			<activation>
 				<property>
