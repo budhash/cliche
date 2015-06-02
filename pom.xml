@@ -539,28 +539,6 @@
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.1</version>
-					<configuration>
-						<source>${java.source.version}</source>
-						<target>${java.target.version}</target>
-						<optimize>true</optimize>
-						<showWarnings>true</showWarnings>
-						<showDeprecation>true</showDeprecation>
-						<compilerArgs>
-							<arg>-Xlint</arg>
-							<!-- <arg>-Werror</arg> -->
-							<arg>-Xlint:-path</arg>
-							<!-- @see https://blogs.oracle.com/darcy/entry/bootclasspath_older_source -->
-							<arg>-Xlint:-options</arg>
-							<!-- @see http://netbeans.org/bugzilla/show_bug.cgi?format=multiple&id=208666 -->
-							<!-- this is to avoid a problem with ANTLR and JDK7 -->
-							<arg>-Xlint:-classfile</arg>
-							<!-- ignore APT warnings -->
-							<arg>-Xlint:-processing</arg>
-						</compilerArgs>
-						<testExcludes>
-							<exclude>**/package-info.java</exclude>
-						</testExcludes>
-					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
@@ -773,34 +751,30 @@
 			</plugin>
 
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
+				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<archive>
-						<manifestEntries>
-							<Implementation-Version>${project.version}-${buildNumber}</Implementation-Version>
-							<Timestamp>${timestamp}</Timestamp>
-							<Url>${project.url}</Url>
-						</manifestEntries>
-					</archive>
+					<source>${java.source.version}</source>
+					<target>${java.target.version}</target>
+					<optimize>true</optimize>
+					<showWarnings>true</showWarnings>
+					<showDeprecation>true</showDeprecation>
+					<compilerArgs>
+						<arg>-Xlint</arg>
+						<!-- <arg>-Werror</arg> -->
+						<arg>-Xlint:-path</arg>
+						<!-- @see https://blogs.oracle.com/darcy/entry/bootclasspath_older_source -->
+						<arg>-Xlint:-options</arg>
+						<!-- @see http://netbeans.org/bugzilla/show_bug.cgi?format=multiple&id=208666 -->
+						<!-- this is to avoid a problem with ANTLR and JDK7 -->
+						<arg>-Xlint:-classfile</arg>
+						<!-- ignore APT warnings -->
+						<arg>-Xlint:-processing</arg>
+					</compilerArgs>
+					<testExcludes>
+						<exclude>**/package-info.java</exclude>
+					</testExcludes>
 				</configuration>
 			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-release-plugin</artifactId>
-
-				<configuration>
-					<autoVersionSubmodules>true</autoVersionSubmodules>
-					<useReleaseProfile>false</useReleaseProfile>
-					<!-- references the profile defined just below -->
-					<releaseProfiles>nexus-release</releaseProfiles>
-					<tagNameFormat>v@{project.version}</tagNameFormat>
-					<preparationGoals>clean test</preparationGoals>
-					<goals>deploy</goals>
-				</configuration>
-			</plugin>
-
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>animal-sniffer-maven-plugin</artifactId>
@@ -863,6 +837,32 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifestEntries>
+							<Implementation-Version>${project.version}-${buildNumber}</Implementation-Version>
+							<Timestamp>${timestamp}</Timestamp>
+							<Url>${project.url}</Url>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<configuration>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+					<useReleaseProfile>false</useReleaseProfile>
+					<!-- references the profile defined just below -->
+					<releaseProfiles>nexus-release</releaseProfiles>
+					<tagNameFormat>v@{project.version}</tagNameFormat>
+					<preparationGoals>clean test</preparationGoals>
+					<goals>deploy</goals>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 	<reporting>
@@ -872,8 +872,8 @@
 
 	<profiles>
 		<profile>
-			<!-- The profile deploys all artifacts to nexus repository
-				and skips default deployment plugin. -->
+			<!-- The profile deploys all artifacts to nexus repository and skips default
+				deployment plugin. -->
 			<id>nexus-release</id>
 			<build>
 				<pluginManagement>
@@ -923,7 +923,7 @@
 								<phase>deploy</phase>
 								<goals>
 									<goal>deploy</goal>
-									<goal>release</goal>
+<!-- 									<goal>release</goal> -->
 								</goals>
 							</execution>
 						</executions>
