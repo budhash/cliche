@@ -13,6 +13,25 @@ ifeq ($(MVN),)
     MVN  := mvn
 endif
 
+ifeq ($(RELEASE_VERSION),)
+    RELEASE_VERSION  := $(shell xmllint --xpath "/*[local-name() = 'project']/*[local-name() = 'version']/text()" pom.xml | perl -pe 's/-SNAPSHOT//')
+endif
+
+ifeq ($(NEXT_VERSION),)
+    NEXT_VERSION  := $(shell echo $(RELEASE_VERSION) | perl -pe 's{^(([0-9]\.)+)?([0-9]+)$$}{$$1 . ($$3 + 1)}e')
+endif
+
+ifneq (,$(findstring -SNAPSHOT,$(RELEASE_VERSION)))
+	RELEASE_VERSION_NSNP = $(shell echo $(RELEASE_VERSION) | perl -pe 's/-SNAPSHOT//')
+else
+	RELEASE_VERSION_NSNP = $(RELEASE_VERSION)
+endif
+
+ifeq (,$(findstring -SNAPSHOT,$(NEXT_VERSION)))
+	NEXT_VERSION_SNP = $(NEXT_VERSION)-SNAPSHOT
+else
+	NEXT_VERSION_SNP = $(NEXT_VERSION)
+endif
 ######################## BUILD TARGETS ###########################
 
 .PHONY: all package compile check test doc docs javadoc clean help
@@ -50,15 +69,32 @@ package:
 deploy-staging:
 	@ $(MVN) clean deploy
 
-prepare:
+release-prepare:
 	@ $(MVN) release:clean release:prepare
-	
-release:
-	@ $(MVN) release:clean release:prepare release:perform
+
+release-perform:
+	@ $(MVN) release:perform -Prelease-sign
+
+release-rollback:
+	@ $(MVN) release:rollback
+			
+release-all:
+	@ $(MVN) release:clean release:prepare release:perform -Prelease-sign
 
 release-silent:
-	@ $(MVN) -B release:clean release:prepare release:perform
-	
+	@ $(MVN) -B release:clean release:prepare release:perform -Prelease-sign
+
+version-bump:
+	@echo setting version: $(NEXT_VERSION_SNP)
+	@ $(MVN) versions:set -DgenerateBackupPoms=false -DnewVersion=$(NEXT_VERSION_SNP)
+
+version-release:
+	@echo setting version: $(RELEASE_VERSION_NSNP)
+	@ $(MVN) versions:set -DgenerateBackupPoms=false -DnewVersion=$(RELEASE_VERSION_NSNP)
+
+nexus-deploy:
+	@ $(MVN) -Pnexus-release -Prelease-sign clean verify source:jar javadoc:jar gpg:sign
+					
 #clean:
 #	@- rm -rf ./bin/*
 #	@- rm -rf ./build/*
