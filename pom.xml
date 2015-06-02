@@ -5,7 +5,7 @@
 
 	<groupId>com.budhash.cliche</groupId>
 	<artifactId>cliche-shell</artifactId>
-	<version>0.9.5</version>
+	<version>0.9.6</version>
 	<packaging>jar</packaging>
 	<name>cliche shell</name>
 	<description>simple command-line shell for java applications</description>

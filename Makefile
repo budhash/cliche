@@ -13,6 +13,11 @@ ifeq ($(MVN),)
     MVN  := mvn
 endif
 
+ifeq ($(GIT),)
+    GIT  := git
+endif
+
+
 ifeq ($(RELEASE_VERSION),)
     RELEASE_VERSION  := $(shell xmllint --xpath "/*[local-name() = 'project']/*[local-name() = 'version']/text()" pom.xml | perl -pe 's/-SNAPSHOT//')
 endif
@@ -84,17 +89,32 @@ release-all:
 release-silent:
 	@ $(MVN) -B release:clean release:prepare release:perform -Prelease-sign
 
+manual-release: version-release git-commit-release nexus-deploy version-bump git-set-next
+
 version-bump:
-	@echo setting version: $(NEXT_VERSION_SNP)
+	@echo setting next version: $(NEXT_VERSION_SNP)
 	@ $(MVN) versions:set -DgenerateBackupPoms=false -DnewVersion=$(NEXT_VERSION_SNP)
 
 version-release:
-	@echo setting version: $(RELEASE_VERSION_NSNP)
+	@echo setting release version: $(RELEASE_VERSION_NSNP)
 	@ $(MVN) versions:set -DgenerateBackupPoms=false -DnewVersion=$(RELEASE_VERSION_NSNP)
-
+	
 nexus-deploy:
-	@ $(MVN) -Pnexus-release -Prelease-sign clean verify source:jar javadoc:jar gpg:sign
-					
+	@echo deploying
+	@ $(MVN) -Pnexus-release -Prelease-sign clean verify source:jar javadoc:jar gpg:sign deploy
+
+git-commit-release:
+	@ $(GIT) commit -a -m "preparing release - ${RELEASE_VERSION_NSNP}"
+	
+git-tag-release:
+	@ $(GIT) tag "v${RELEASE_VERSION_NSNP}"	
+
+git-set-next:
+	@ $(GIT) commit -a -m "preparing next version - ${NEXT_VERSION_SNP}"
+	@ $(GIT) pust
+	@ $(GIT) push --tags
+
+						
 #clean:
 #	@- rm -rf ./bin/*
 #	@- rm -rf ./build/*
