@@ -107,11 +107,11 @@ git-commit-release:
 	@ $(GIT) commit -a -m "preparing release - ${RELEASE_VERSION_NSNP}"
 	
 git-tag-release:
-	@ $(GIT) tag "v${RELEASE_VERSION_NSNP}"	
+	@ $(MVN) scm:tag -Dtag="v${RELEASE_VERSION_NSNP}"	
 
 git-set-next:
 	@ $(GIT) commit -a -m "preparing next version - ${NEXT_VERSION_SNP}"
-	@ $(GIT) pust
+	@ $(GIT) push
 	@ $(GIT) push --tags
 
 						
