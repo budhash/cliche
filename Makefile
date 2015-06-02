@@ -89,7 +89,7 @@ release-all:
 release-silent:
 	@ $(MVN) -B release:clean release:prepare release:perform -Prelease-sign
 
-manual-release: version-release git-commit-release nexus-deploy version-bump git-set-next
+manual-release: version-release git-commit-release nexus-deploy git-tag-release version-bump git-checkin-next
 
 version-bump:
 	@echo setting next version: $(NEXT_VERSION_SNP)
@@ -109,10 +109,11 @@ git-commit-release:
 git-tag-release:
 	@ $(MVN) scm:tag -Dtag="v${RELEASE_VERSION_NSNP}"	
 
-git-set-next:
-	@ $(GIT) commit -a -m "preparing next version - ${NEXT_VERSION_SNP}"
-	@ $(GIT) push
-	@ $(GIT) push --tags
+git-checkin-next:
+	@ $(MVN) scm:checkin -Dmessage="preparing next version - ${NEXT_VERSION_SNP}"
+	#@ $(GIT) commit -a -m "preparing next version - ${NEXT_VERSION_SNP}"
+	#@ $(GIT) push
+	#@ $(GIT) push --tags
 
 						
 #clean:
