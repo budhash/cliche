@@ -50,6 +50,9 @@ package:
 deploy-staging:
 	@ $(MVN) clean deploy
 
+prepare:
+	@ $(MVN) release:clean release:prepare
+	
 release:
 	@ $(MVN) release:clean release:prepare release:perform
 

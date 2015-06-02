@@ -16,39 +16,41 @@ import java.util.Set;
  */
 public class EmptyMultiMap<K, V> implements MultiMap<K, V> {
 
-    public void put(K key, V value) {
-        throw new UnsupportedOperationException("You can't modify EmptyMultyMap: it's always empty!");
-    }
+	public void put(K key, V value) {
+		throw new UnsupportedOperationException(
+				"You can't modify EmptyMultyMap: it's always empty!");
+	}
 
-    public Collection<V> get(K key) {
-        return new ArrayList<V>();
-    }
+	public Collection<V> get(K key) {
+		return new ArrayList<V>();
+	}
 
-    public Set<K> keySet() {
-        return new HashSet<K>();
-    }
+	public Set<K> keySet() {
+		return new HashSet<K>();
+	}
 
-    public void remove(K key, V value) {
-        throw new UnsupportedOperationException("You can't modify EmptyMultyMap: it's always empty!");
-    }
+	public void remove(K key, V value) {
+		throw new UnsupportedOperationException(
+				"You can't modify EmptyMultyMap: it's always empty!");
+	}
 
-    public void removeAll(K key) {
-        throw new UnsupportedOperationException("You can't modify EmptyMultyMap: it's always empty!");
-    }
+	public void removeAll(K key) {
+		throw new UnsupportedOperationException(
+				"You can't modify EmptyMultyMap: it's always empty!");
+	}
 
-    public int size() {
-        return 0;
-    }
+	public int size() {
+		return 0;
+	}
 
-    public void putAll(MultiMap<K, V> map) {
-        throw new UnsupportedOperationException("You can't modify EmptyMultyMap: it's always empty!");
-    }
+	public void putAll(MultiMap<K, V> map) {
+		throw new UnsupportedOperationException(
+				"You can't modify EmptyMultyMap: it's always empty!");
+	}
 
-    @Override
-    public String toString() {
-        return "{}";
-    }
-
-
+	@Override
+	public String toString() {
+		return "{}";
+	}
 
 }
