@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.budhash.cliche</groupId>
 	<artifactId>cliche-shell</artifactId>
-	<version>0.9.4-SNAPSHOT</version>
+	<version>0.9.4</version>
 	<packaging>jar</packaging>
 	<name>cliche shell</name>
 	<description>simple command-line shell for java applications</description>
@@ -41,7 +40,7 @@
 	<scm>
 		<connection>scm:git:https://github.com/budhash/cliche.git</connection>
 		<developerConnection>scm:git:https://github.com/budhash/cliche.git</developerConnection>
-		<tag>HEAD</tag>
+		<tag>v0.9.4</tag>
 		<url>https://github.com/budhash/cliche</url>
 	</scm>
 	<issueManagement>
@@ -714,7 +713,7 @@
 										</goals>
 									</pluginExecutionFilter>
 									<action>
-										<ignore></ignore>
+										<ignore />
 									</action>
 								</pluginExecution>
 							</pluginExecutions>
@@ -867,7 +866,7 @@
 	</build>
 	<reporting>
 		<!-- unused - for Maven 2.0 plugins mostly. -->
-		<excludeDefaults></excludeDefaults>
+		<excludeDefaults />
 	</reporting>
 
 	<profiles>
