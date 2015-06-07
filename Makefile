@@ -89,7 +89,9 @@ release-all:
 release-silent:
 	@ $(MVN) -B release:clean release:prepare release:perform -Prelease-sign
 
-manual-release: version-release git-commit-release nexus-deploy git-tag-release version-bump git-checkin-next
+manual-release-nodeploy: version-release git-checkin-release git-tag-release version-bump git-checkin-next
+	
+manual-release: version-release git-checkin-release nexus-deploy git-tag-release version-bump git-checkin-next
 
 version-bump:
 	@echo setting next version: $(NEXT_VERSION_SNP)
@@ -103,17 +105,14 @@ nexus-deploy:
 	@echo deploying
 	@ $(MVN) -Pnexus-release -Prelease-sign clean verify source:jar javadoc:jar gpg:sign deploy
 
-git-commit-release:
-	@ $(GIT) commit -a -m "preparing release - ${RELEASE_VERSION_NSNP}"
+git-checkin-release:
+	@ $(MVN) scm:checkin -Dmessage="preparing release - ${RELEASE_VERSION_NSNP}"
 	
 git-tag-release:
 	@ $(MVN) scm:tag -Dtag="v${RELEASE_VERSION_NSNP}"	
 
 git-checkin-next:
 	@ $(MVN) scm:checkin -Dmessage="preparing next version - ${NEXT_VERSION_SNP}"
-	#@ $(GIT) commit -a -m "preparing next version - ${NEXT_VERSION_SNP}"
-	#@ $(GIT) push
-	#@ $(GIT) push --tags
 
 						
 #clean:
