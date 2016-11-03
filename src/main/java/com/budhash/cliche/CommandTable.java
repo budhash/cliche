@@ -96,7 +96,7 @@ public class CommandTable {
         for (ShellCommand cs : collectedTable) {
             if (cs.getMethod().getParameterTypes().length == tokens.size()-1
                     || (cs.getMethod().isVarArgs()
-                        && (cs.getMethod().getParameterTypes().length <= tokens.size()-1))) {
+                        && (cs.getMethod().getParameterTypes().length <= tokens.size()))) {
                 reducedTable.add(cs);
             }
         }
