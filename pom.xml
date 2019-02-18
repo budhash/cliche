@@ -103,7 +103,7 @@
 		<!-- other helpful libraries -->
 		<groovy.all.version>2.4.3</groovy.all.version>
 		<jodatime.version>2.7</jodatime.version>
-		<guava.version>18.0</guava.version>
+		<guava.version>23.0</guava.version>
 		<guice.version>4.0</guice.version>
 		<javax.servlet.version>3.1.0</javax.servlet.version>
 		<bouncycastle.version>1.52</bouncycastle.version>
