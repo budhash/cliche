@@ -113,7 +113,7 @@
 		<gson.version>2.3.1</gson.version>
 		<xmlapis.version>1.4.01</xmlapis.version>
 		<jackson.version>2.6.0-rc1</jackson.version>
-		<feign.version>8.3.0</feign.version>
+		<feign.version>8.18.0</feign.version>
 		<apache.httpclient.version>4.4.1</apache.httpclient.version>
 
 		<!-- persistance and orm -->
