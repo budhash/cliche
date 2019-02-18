@@ -106,7 +106,7 @@
 		<guava.version>18.0</guava.version>
 		<guice.version>4.0</guice.version>
 		<javax.servlet.version>3.1.0</javax.servlet.version>
-		<bouncycastle.version>1.52</bouncycastle.version>
+		<bouncycastle.version>1.61</bouncycastle.version>
 		<supercsv.version>2.3.1</supercsv.version>
 		<lambdaj.version>2.3.3</lambdaj.version>
 		<projectlombok.version>1.16.4</projectlombok.version>
