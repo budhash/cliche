@@ -101,7 +101,7 @@
 		<!-- google libs -->
 
 		<!-- other helpful libraries -->
-		<groovy.all.version>2.4.3</groovy.all.version>
+		<groovy.all.version>2.4.16</groovy.all.version>
 		<jodatime.version>2.7</jodatime.version>
 		<guava.version>18.0</guava.version>
 		<guice.version>4.0</guice.version>
