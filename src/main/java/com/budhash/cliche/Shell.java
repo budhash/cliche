@@ -243,7 +243,7 @@ public class Shell {
 		}
 		output.output(appName, outputConverter);
 		String command = "";
-		while (!command.trim().equals("exit")) {
+		while (command != null && !command.trim().equals("exit")) {
 			try {
 				command = input.readCommand(path);
 				processLine(command);
@@ -287,6 +287,10 @@ public class Shell {
 	 *             This may be TokenException
 	 */
 	public void processLine(String line) throws CLIException {
+	    if (line == null) {
+            return;
+        }
+
 		if (line.trim().equals("?")) {
 			output.output(String.format(HINT_FORMAT, appName), outputConverter);
 		} else {
